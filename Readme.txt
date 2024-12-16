@@ -33,7 +33,7 @@ Temporal scale: 1901-2021, monthly, annual
 Spatial scale: global, 0.5 degree
 Data format: .nc
 
-[N deposition] 
+[P deposition] 
 Unit: kg P ha-1 y-1
 Variable: P_total_depostion
 Temporal scale: 1901-2021, monthly, annual
