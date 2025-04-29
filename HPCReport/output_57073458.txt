@@ -1,0 +1,4 @@
+
+Monthly N deposition has been downscaled to daily
+
+Annual P deposition of year 2000 has been downscaled to daily (1980–2020)
