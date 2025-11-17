@@ -8,4 +8,3 @@ remove Scientific Linux 7 libraries.
 load Scientific Linux 7 libraries.
 remove Scientific Linux 7 libraries.
 load Scientific Linux 7 libraries.
-cdo setattribute: Processed 3881520000 values from 1 variable over 14975 timesteps [71.00s 53MB]

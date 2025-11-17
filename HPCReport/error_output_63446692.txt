@@ -1,0 +1,61 @@
+remove cdo 1.9.3 (GCC) library and binaries.
+remove hdf5 1.10.1 (gcc) library and binaries.
+remove Scientific Linux 7 libraries.
+load cdo 1.9.3 (GCC) library and binaries.
+load hdf5 1.10.1 (gcc) library and binaries.
+load Scientific Linux 7 libraries.
+remove Scientific Linux 7 libraries.
+load Scientific Linux 7 libraries.
+remove Scientific Linux 7 libraries.
+load Scientific Linux 7 libraries.
+Traceback (most recent call last):
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 539, in decode_cf_datetime
+    dates = _decode_datetime_with_pandas(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 470, in _decode_datetime_with_pandas
+    time_unit, ref_date = _unpack_time_unit_and_ref_date(units)
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 295, in _unpack_time_unit_and_ref_date
+    time_unit = _netcdf_to_numpy_timeunit(time_unit)
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 132, in _netcdf_to_numpy_timeunit
+    {
+KeyError: 'months'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 330, in _decode_cf_datetime_dtype
+    result = decode_cf_datetime(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 543, in decode_cf_datetime
+    dates = _decode_datetime_with_cftime(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 358, in _decode_datetime_with_cftime
+    cftime.num2date(num_dates, units, calendar, only_use_cftime_datetimes=True)
+  File "src/cftime/_cftime.pyx", line 587, in cftime._cftime.num2date
+  File "src/cftime/_cftime.pyx", line 101, in cftime._cftime._dateparse
+ValueError: 'months since' units only allowed for '360_day' calendar
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/conventions.py", line 405, in decode_cf_variables
+    new_vars[k] = decode_cf_variable(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/conventions.py", line 238, in decode_cf_variable
+    var = decode_times.decode(var, name=name)
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 1380, in decode
+    dtype = _decode_cf_datetime_dtype(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/coding/times.py", line 342, in _decode_cf_datetime_dtype
+    raise ValueError(msg) from err
+ValueError: unable to decode time units 'months since 1850-01-01 00:00' with "calendar 'standard'". Try opening your dataset with decode_times=False or installing cftime if it is not installed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/lustre/nobackup/WUR/ESG/zhou111/Code/Data_Processing/Deposition/1_N_mon2daily.py", line 13, in <module>
+    ds = xr.open_dataset(input_file)
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/backends/api.py", line 687, in open_dataset
+    backend_ds = backend.open_dataset(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/backends/netCDF4_.py", line 681, in open_dataset
+    ds = store_entrypoint.open_dataset(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/backends/store.py", line 47, in open_dataset
+    vars, attrs, coord_names = conventions.decode_cf_variables(
+  File "/home/WUR/zhou111/miniconda3/envs/myenv/lib/python3.10/site-packages/xarray/conventions.py", line 416, in decode_cf_variables
+    raise type(e)(f"Failed to decode variable {k!r}: {e}") from e
+ValueError: Failed to decode variable 'time': unable to decode time units 'months since 1850-01-01 00:00' with "calendar 'standard'". Try opening your dataset with decode_times=False or installing cftime if it is not installed.

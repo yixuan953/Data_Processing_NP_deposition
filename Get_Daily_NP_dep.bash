@@ -25,10 +25,14 @@ output_dir="/lustre/nobackup/WUR/ESG/zhou111/Data/Deposition"
 
 # Downscale N deposition (1901-2021) to daily
 get_N_daily_dep() {
-    cdo -inttime,1901-01-01,00:00:00,1day ${input_dir}/N_deposition_monthly.nc ${output_dir}/N_dep_daily_1901-2021.nc
-    echo "N deposition downscaled to daily (1901-2021)"
+    source /home/WUR/zhou111/miniconda3/etc/profile.d/conda.sh
+    conda activate myenv
+    python /lustre/nobackup/WUR/ESG/zhou111/Code/Data_Processing/Deposition/1_N_mon2daily.py
+    conda deactivate
 }
-# get_N_daily_dep
+
+get_N_daily_dep
+
 
 # Downscale P deposition (2000) to daily (1980-2020)
 get_P_daily_dep() {
@@ -40,4 +44,4 @@ get_P_daily_dep() {
 
     echo "P deposition downscaled to daily (1901-2021)"
 }
-get_P_daily_dep
+# get_P_daily_dep
